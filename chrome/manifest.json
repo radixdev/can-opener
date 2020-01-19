@@ -4,6 +4,9 @@
   "description": "Open IDE from Github PR via click",
   "manifest_version": 2,
   "icons": {
+    "16": "icons/magic_wand_512.png",
+    "32": "icons/magic_wand_512.png",
+    "48": "icons/magic_wand_512.png",
     "128": "icons/magic_wand_512.png"
   },
   "browser_action": {

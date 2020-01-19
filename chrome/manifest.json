@@ -1,0 +1,26 @@
+{
+  "name": "Open IDEs From Github",
+  "version": "1.0",
+  "description": "Open IDE from Github PR via click",
+  "manifest_version": 2,
+  "icons": {
+    "128": "icons/magic_wand_512.png"
+  },
+  "browser_action": {
+    "default_title": "Open IDEs from Github PR via click"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://github.com/*/*/pull/*"
+      ],
+      "exclude_matches": [
+        "https://github.com/*/*/pull/*/files"
+      ],
+      "js": [
+        "src/content_script.js"
+      ]
+    }
+  ]
+}

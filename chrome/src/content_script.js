@@ -1,7 +1,7 @@
-console.log("We're on github!!!");
 function log(msg) {
-  console.log(msg);
+  // console.log(msg);
 }
+log("We're on github!!!");
 
 function getLineNumberFromBlobElement(blobDocument) {
   // Contains the table of line numbers

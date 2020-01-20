@@ -21,6 +21,34 @@ function getFilePathFromHeaderDocument(headerDocument) {
   return headerThing.attributes["title"].value;
 }
 
+function getProtocolLink(projectId, filePath, lineNumber) {
+  scheme = "canopenr";
+  authority = "open";
+  projectIdQueryPart = `project=${projectId}`
+  fileQueryPart = `file=${filePath}`;
+  lineNumberQueryPart = `line=${lineNumber}`;
+
+  unencodedLink = `${scheme}://${authority}?${projectIdQueryPart}&${fileQueryPart}&${lineNumberQueryPart}`;
+  return encodeURI(unencodedLink);
+}
+
+function addProtocolLinkToHeaderDocument(headerDocument, link) {
+  wandUrl = chrome.runtime.getURL("icons/magic_wand_512.png");
+  var img = document.createElement("img");
+  img.width = 16;
+  img.height = 16;
+  img.src = wandUrl;
+
+  // Now surround that image with an "a" tag
+  var containerTag = document.createElement("a");
+  containerTag.href = link;
+  // containerTag.href = "https://google.com"'
+  containerTag.appendChild(img);
+
+  // Now add the container
+  headerDocument.insertBefore(containerTag, headerDocument.firstChild);
+}
+
 // Get the project identifier
 // https://github.com/radixdev/can-opener/pull/2824 is identified by "radixdev/can-opener"
 var currentUrl = location.href;
@@ -52,7 +80,14 @@ for (var i=0; i < threadContainerElements.length; i+=1) {
   // Get the file name from the header.
   //
   var headerDocument = threadContainer.getElementsByClassName('file-header')[0];
-  // log(headerDocument);
   var filePath = getFilePathFromHeaderDocument(headerDocument);
   log(`Got file ${filePath}`);
+
+  //
+  // Now edit the header document to have our special "goto IDE button"
+  //
+  log(headerDocument);
+  var deeplink = getProtocolLink(projectId, filePath, lineNumber);
+  log(deeplink);
+  addProtocolLinkToHeaderDocument(headerDocument, deeplink);
 };

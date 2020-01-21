@@ -39,7 +39,6 @@ def main(args):
   openCommand = openCommand.replace(PROJECT_PATH_TEMPLATE_VAR, localProjectPath)
   openCommand = openCommand.replace(FILE_PATH_TEMPLATE_VAR, filePath)
   openCommand = openCommand.replace(LINE_NUMBER_TEMPLATE_VAR, lineNumber)
-  print(openCommand)
   os.system(openCommand)
 
 if __name__ == '__main__':

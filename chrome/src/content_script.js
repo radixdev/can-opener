@@ -59,35 +59,37 @@ log(`Project id ${projectId}`);
 
 // Thread Container - Box of content based on lines of code for a given file
 var threadContainerElements = document.getElementsByClassName('mt-0 bg-white file js-comment-container js-resolvable-timeline-thread-container has-inline-notes');
-// log(threadContainerElements);
 
 // Each container has a
 // "file header" - Just says the file being commented on. This is where we'll put our deeplink button.
 // "blob wrapper" - Actually shows the code being commented on. Also shows the line numbers in question.
 // "inline comments" - Comments from other Github users. Not relevant to this extension.
 for (var i=0; i < threadContainerElements.length; i+=1) {
-  var threadContainer = threadContainerElements[i];
+  try {
+    var threadContainer = threadContainerElements[i];
 
-  //
-  // Retrieve the line number from the blob. The new line numbers are on the right visually in the table.
-  //
-  var blobElement = threadContainer.getElementsByClassName('blob-wrapper border-bottom')[0];
+    //
+    // Retrieve the line number from the blob. The new line numbers are on the right visually in the table.
+    //
+    var blobElement = threadContainer.getElementsByClassName('blob-wrapper border-bottom')[0];
 
-  var lineNumber = getLineNumberFromBlobElement(blobElement);
-  log(`Got line number ${lineNumber}`);
+    var lineNumber = getLineNumberFromBlobElement(blobElement);
+    log(`Got line number ${lineNumber}`);
 
-  //
-  // Get the file name from the header.
-  //
-  var headerDocument = threadContainer.getElementsByClassName('file-header')[0];
-  var filePath = getFilePathFromHeaderDocument(headerDocument);
-  log(`Got file ${filePath}`);
+    //
+    // Get the file name from the header.
+    //
+    var headerDocument = threadContainer.getElementsByClassName('file-header')[0];
+    var filePath = getFilePathFromHeaderDocument(headerDocument);
+    log(`Got file ${filePath}`);
 
-  //
-  // Now edit the header document to have our special "goto IDE button"
-  //
-  log(headerDocument);
-  var deeplink = getProtocolLink(projectId, filePath, lineNumber);
-  log(deeplink);
-  addProtocolLinkToHeaderDocument(headerDocument, deeplink);
+    //
+    // Now edit the header document to have our special "goto IDE button"
+    //
+    var deeplink = getProtocolLink(projectId, filePath, lineNumber);
+    addProtocolLinkToHeaderDocument(headerDocument, deeplink);
+  } catch (err) {
+    log("Failed to add deeplink");
+    log(err);
+  }
 };

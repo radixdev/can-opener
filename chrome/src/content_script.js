@@ -22,18 +22,18 @@ function getFilePathFromHeaderDocument(headerDocument) {
 }
 
 function getProtocolLink(projectId, filePath, lineNumber) {
-  scheme = "canopenr";
-  authority = "open";
-  projectIdQueryPart = `project=${projectId}`
-  fileQueryPart = `file=${filePath}`;
-  lineNumberQueryPart = `line=${lineNumber}`;
+  var scheme = "canopenr";
+  var authority = "open";
+  var projectIdQueryPart = `project=${projectId}`
+  var fileQueryPart = `file=${filePath}`;
+  var lineNumberQueryPart = `line=${lineNumber}`;
 
-  unencodedLink = `${scheme}://${authority}?${projectIdQueryPart}&${fileQueryPart}&${lineNumberQueryPart}`;
+  var unencodedLink = `${scheme}://${authority}?${projectIdQueryPart}&${fileQueryPart}&${lineNumberQueryPart}`;
   return encodeURI(unencodedLink);
 }
 
 function addProtocolLinkToHeaderDocument(headerDocument, link) {
-  wandUrl = chrome.runtime.getURL("icons/magic_wand_512.png");
+  var wandUrl = chrome.runtime.getURL("icons/magic_wand_512.png");
   var img = document.createElement("img");
   img.width = 16;
   img.height = 16;

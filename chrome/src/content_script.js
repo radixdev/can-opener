@@ -33,7 +33,7 @@ function getProtocolLink(projectId, filePath, lineNumber) {
 }
 
 function addProtocolLinkToHeaderDocument(headerDocument, link) {
-  var wandUrl = chrome.runtime.getURL("icons/magic_wand_512.png");
+  var wandUrl = chrome.runtime.getURL("icons/magic_wand_16.png");
   var img = document.createElement("img");
   img.width = 16;
   img.height = 16;

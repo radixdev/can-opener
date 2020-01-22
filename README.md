@@ -1,6 +1,8 @@
 # can-opener
 Open IDEs directly from Github Pull Requests
 
+![Demo](howto.gif)
+
 # installation
 Instructions are for OSX only at the moment.
 

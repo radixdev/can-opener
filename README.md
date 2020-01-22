@@ -1,8 +1,14 @@
 # can-opener
 Open IDEs directly from Github Pull Requests
 
-## attribution
-* Icons made by https://www.flaticon.com/authors/smashicons
+# installation
+Instructions are for OSX only at the moment.
+
+## chrome extension
+Proper chrome extension in the store coming soon...
+
+### Installing from source
+[Load the `./chrome` folder as an unpacked extension](https://developer.chrome.com/extensions/getstarted#manifest).
 
 ## config
 Create a config file like this under `~/.canopenr/config.json`:
@@ -46,6 +52,8 @@ Figure it out and open a PR lol.
 ## linux install instructions
 See Windows instructions.
 
-## misc
+# misc
 https://developer.chrome.com/extensions/overview
 
+## attribution
+* Icons made by https://www.flaticon.com/authors/smashicons

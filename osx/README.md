@@ -1,3 +1,6 @@
+# The easy way
+Skip step #1 in the following instructions. The app is already built ;)
+
 # Building from source
 
 1. Run `build_mac_app.sh`.

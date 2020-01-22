@@ -1,5 +1,4 @@
 import sys
-import pprint
 import os
 from urllib.parse import urlsplit, parse_qs
 import json

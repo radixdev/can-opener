@@ -1,6 +1,3 @@
-Make this an applescript command, export as Application, double click on the application.
-```
-on open location this_URL
-	do shell script "/usr/local/bin/python3 /Users/juliancontreras/runit/can-opener/osx/parser.py '" & this_URL & "'"
-end open location
-```
+1. Run `build_mac_app.sh`.
+2. Copy `Can-Openr.app` to your `Applications` folder.
+3. Double click the app to register the `can-openr://` scheme that the chrome extension uses.

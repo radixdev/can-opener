@@ -43,6 +43,18 @@ Create a config file like this under `~/.canopenr/config.json`:
 }
 ```
 
+### config keys
+
+* `editors` - A JSON object containing all the editor aliases.
+* `editors.open_cmd` - The terminal command to open the editor for the given project, file, and line number.
+  * `%__PROJECT_PATH__%` is substituted with the project path as given via `projects.path`. E.g. `~/code_mobile/android-sdk`.
+  * `%__FILE_PATH__%` is substituted with the file path as communicated from the chrome extension deeplink. E.g. `com/jazzhands/src/hamilton.java`.
+  * `%__LINE_NUMBER__%` is substituted with the line number as communicated from the chrome extension deeplink. E.g. `9001`.
+  * The final generated command might look like `/usr/local/bin/studio ~/code_mobile/android-sdk/com/jazzhands/src/hamilton.java:9001` after substitutions for the `JazzHands/android-sdk` project.
+* `projects` - For the URL https://github.com/JazzHands/android-sdk, `JazzHands/android-sdk` is the project.
+* `projects.path` - The path, on your local machine, where the project exists.
+* `projects.editor` - The alias for the editor. This string is completely arbitrary and is only used to link to an editor present in the `editors` object.
+
 ## osx install instructions
 Follow the [osx `README.md` instructions](https://github.com/radixdev/can-opener/blob/master/osx/README.md).
 

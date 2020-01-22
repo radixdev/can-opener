@@ -37,6 +37,15 @@ Create a config file like this under `~/.canopenr/config.json`:
 }
 ```
 
+## osx install instructions
+Follow the [osx `README.md` instructions](https://github.com/radixdev/can-opener/blob/master/osx/README.md).
+
+## windows install instructions
+Figure it out and open a PR lol.
+
+## linux install instructions
+See Windows instructions.
+
 ## misc
 https://developer.chrome.com/extensions/overview
 

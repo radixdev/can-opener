@@ -7,7 +7,7 @@ Open IDEs directly from Github Pull Requests
 Instructions are for OSX only at the moment.
 
 ## chrome extension
-Proper chrome extension in the store coming soon...
+https://chrome.google.com/webstore/detail/mkfddjpmlgabhphmcbagdcdpkenapadi
 
 ### Installing from source
 [Load the `./chrome` folder as an unpacked extension](https://developer.chrome.com/extensions/getstarted#manifest).

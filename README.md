@@ -10,7 +10,8 @@ Instructions are for OSX only at the moment.
 coming soon™
 
 ### Installing from source
-[Load the `./chrome` folder as an unpacked extension](https://developer.chrome.com/extensions/getstarted#manifest).
+1. Clone this repo
+2. [Load the `./chrome` folder as an unpacked extension](https://developer.chrome.com/extensions/getstarted#manifest).
 
 ## config
 Create a config file like this under `~/.canopenr/config.json`:

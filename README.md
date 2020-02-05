@@ -7,7 +7,7 @@ Open IDEs directly from Github Pull Requests
 Instructions are for OSX only at the moment.
 
 ## chrome extension
-coming soon™
+https://chrome.google.com/webstore/detail/open-ides-from-github/mkfddjpmlgabhphmcbagdcdpkenapadi?hl=en
 
 ### Installing from source
 1. Clone this repo

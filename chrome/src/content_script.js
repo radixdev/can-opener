@@ -11,8 +11,10 @@ function getLineNumberFromBlobElement(blobDocument) {
 
   // Now find the first child whose id looks like "discussion-diff-864481311R57" i.e. "{DISCUSSION_ID}R{LINE_NUMBER}"
   var allRightSideLineElements = blobDocument.querySelectorAll(`[id^='${discussionId}R']`);
+  
   // Get the "data-line-number" attribute
-  return allRightSideLineElements[0].attributes["data-line-number"].value;
+  var lastElementIndex = allRightSideLineElements.length - 1;
+  return allRightSideLineElements[lastElementIndex].attributes["data-line-number"].value;
 }
 
 function getFilePathFromHeaderDocument(headerDocument) {

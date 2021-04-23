@@ -1,5 +1,5 @@
 function log(msg) {
-  // console.log(msg);
+  console.log(msg);
 }
 log("We're on github!!!");
 

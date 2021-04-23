@@ -60,7 +60,8 @@ var projectId = projectIdRegexCapture[2];
 log(`Project id ${projectId}`);
 
 // Thread Container - Box of content based on lines of code for a given file
-var threadContainerElements = document.getElementsByClassName('mt-0 bg-white file js-comment-container js-resolvable-timeline-thread-container has-inline-notes');
+var threadContainerElements = document.getElementsByClassName('js-comment-container has-inline-notes');
+log(threadContainerElements);
 
 // Each container has a
 // "file header" - Just says the file being commented on. This is where we'll put our deeplink button.

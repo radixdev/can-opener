@@ -1,26 +1,20 @@
 function log(msg) {
-  // console.log(msg);
+  console.log(msg);
 }
 log("We're on github!!!");
 
 function getLineNumberFromBlobElement(blobDocument) {
   // Contains the table of line numbers
   var tableDocument = blobDocument.getElementsByTagName("table")[0];
-  // Looks like "discussion-diff-864481311"
-  var discussionId = tableDocument.id;
 
-  // Now find the first child whose id looks like "discussion-diff-864481311R57" i.e. "{DISCUSSION_ID}R{LINE_NUMBER}"
-  var allRightSideLineElements = blobDocument.querySelectorAll(`[id^='${discussionId}R']`);
-  
-  // Get the "data-line-number" attribute
-  var lastElementIndex = allRightSideLineElements.length - 1;
-  return allRightSideLineElements[lastElementIndex].attributes["data-line-number"].value;
+  var tBodies = tableDocument.tBodies[0].children;
+  var lastBody = tBodies[tBodies.length - 1];
+  return lastBody.querySelectorAll("[data-line-number]")[0].attributes["data-line-number"].value
 }
 
-function getFilePathFromHeaderDocument(headerDocument) {
-  var headerThing = headerDocument.getElementsByTagName("a")[0];
-  // Assuming the "title" attribute is always the full untruncated path of the file
-  return headerThing.attributes["title"].value;
+function getFilePathFromHeaderDocument(threadContainer) {
+  var ourLink = threadContainer.getElementsByTagName("a")[0];
+  return ourLink.title;
 }
 
 function getProtocolLink(projectId, filePath, lineNumber) {
@@ -70,19 +64,21 @@ log(threadContainerElements);
 for (var i=0; i < threadContainerElements.length; i+=1) {
   try {
     var threadContainer = threadContainerElements[i];
+    log(threadContainer);
 
     //
     // Retrieve the line number from the blob. The new line numbers are on the right visually in the table.
     //
     var blobElement = threadContainer.getElementsByClassName('blob-wrapper border-bottom')[0];
-
     var lineNumber = getLineNumberFromBlobElement(blobElement);
     log(`Got line number ${lineNumber}`);
 
     //
-    // Get the file name from the header.
+    // Get the file name from the container.
     //
-    var headerDocument = threadContainer.getElementsByClassName('file-header')[0];
+    var headerDocument = threadContainer.getElementsByTagName("summary")[0];
+    log("header doc");
+    log(headerDocument);
     var filePath = getFilePathFromHeaderDocument(headerDocument);
     log(`Got file ${filePath}`);
 
@@ -90,7 +86,7 @@ for (var i=0; i < threadContainerElements.length; i+=1) {
     // Now edit the header document to have our special "goto IDE button"
     //
     var deeplink = getProtocolLink(projectId, filePath, lineNumber);
-    addProtocolLinkToHeaderDocument(headerDocument, deeplink);
+    addProtocolLinkToHeaderDocument(threadContainer, deeplink);
   } catch (err) {
     log("Failed to add deeplink");
     log(err);

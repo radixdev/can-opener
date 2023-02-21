@@ -13,8 +13,10 @@ function getLineNumberFromBlobElement(blobDocument) {
 }
 
 function getFilePathFromHeaderDocument(threadContainer) {
+  console.log(threadContainer.getElementsByTagName("a"));
   var ourLink = threadContainer.getElementsByTagName("a")[0];
-  return ourLink.title;
+  console.log(ourLink);
+  return ourLink.innerText;
 }
 
 function getProtocolLink(projectId, filePath, lineNumber) {

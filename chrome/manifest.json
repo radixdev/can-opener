@@ -1,6 +1,6 @@
 {
   "name": "Open IDEs From Github",
-  "version": "1.4",
+  "version": "1.5",
   "description": "Open IDE from Github PR via click",
   "manifest_version": 3,
   "icons": {
